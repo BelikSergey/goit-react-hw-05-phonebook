@@ -1,28 +1,21 @@
 import PropTypes from "prop-types";
 import s from "./ContactsList.module.css";
+import ContactListItem from './ContactListItem'
 
-function ContactListItem({ id, name, number, onRemove }) {
-  // console.log(name, number);
-  return (
-    <li className={s.listItem}>
-      {name} : {number}{" "}
-      <button className={s.buttonDelete} onClick={() => onRemove(id)}>
-        delete
-      </button>
-    </li>
-  );
-}
 
 function ContactsList({ contacts, onRemove }) {
   if (contacts.length === 0) return null;
   // console.log(contacts);
   return (
-    <ul>
+      <div >
+      <ul className={s.UlList}>
       {/* <h3>Contacts</h3> */}
       {contacts.map((contact) => (
         <ContactListItem key={contact.id} {...contact} onRemove={onRemove} />
       ))}
     </ul>
+      </div>
+    
   );
 }
 
@@ -34,14 +27,6 @@ ContactsList.propTypes = {
     })
   ),
 };
-ContactListItem.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-    })
-  ),
-};
+
 
 export default ContactsList;

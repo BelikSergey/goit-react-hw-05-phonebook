@@ -1,7 +1,15 @@
 import { Component } from "react";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+// import { CSSTransition } from 'react-transition-group';
+import styles from './App.module.css';
 import ContactsList from "./components/ContactsList";
 import ContactForm from "./components/ContactForm";
 import Filter from "./components/Filter";
+import LogoPhoneBook from './components/LogoPhoneBook';
+import Container from './UI/Container/Container';
+
 
 class App extends Component {
   state = {
@@ -41,7 +49,11 @@ class App extends Component {
     const { contacts } = this.state;
     const isContactThere = contacts.find((contact) => contact.name === name);
     if (isContactThere) {
-      alert("Contact is exist");
+      toast.error('Contact is exist', {
+        autoClose: 2000,
+        position: "top-right",
+    })
+      // alert("Contact is exist");
       return;
     }
     //  else {
@@ -64,22 +76,39 @@ class App extends Component {
   };
 
   render() {
-    const { filter } = this.state;
+    const { filter, contacts } = this.state;
     const filteredContacts = this.filterContacts();
     return (
       <>
-        <h2>Phonebook</h2>
+        <Container>
+          {/* <CSSTransition
+          appear
+          in={true}
+          className={styles}
+          timeout={500}
+
+          > */}
+          <LogoPhoneBook/>
+          {/* </CSSTransition> */}
+        
         <ContactForm
           onSubmit={this.handleSubmitForm}
           onChekunike={this.handleUniceContact}
         />
-        <h2>Contacts</h2>
-        <h3>Find contacts by name</h3>
-        <Filter filter={filter} onChange={this.handleFilterSearch} />
+          </Container>
+          <Container>
+        {contacts.length > 1 &&
+           <div className={styles.SearchForm}>
+           <p>Find contacts by name</p>
+           <Filter filter={filter} onChange={this.handleFilterSearch} />
+           </div>
+         }
         <ContactsList
           contacts={filteredContacts}
           onRemove={this.handleRemoveContact}
         />
+        </Container>
+         <ToastContainer position="top-left" autoClose={2000} />
       </>
     );
   }

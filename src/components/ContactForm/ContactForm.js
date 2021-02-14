@@ -44,8 +44,8 @@ export default class ContactForm extends Component {
     const { name, number } = this.state;
     return (
       <form className={s.form} onSubmit={this.handleSubmitForm}>
-        <h3>Name</h3>
-        <input
+        <p>Name</p>
+        <input className={s.FormInput}
           type="text"
           name="name"
           // id={this.nameId}
@@ -54,8 +54,8 @@ export default class ContactForm extends Component {
           onChange={this.handleInputChange}
         ></input>
 
-        <h3>Number</h3>
-        <input
+        <p>Number</p>
+        <input className={s.FormInput}
           type="tel"
           name="number"
           pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"

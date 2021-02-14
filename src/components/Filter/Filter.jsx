@@ -1,7 +1,7 @@
 const Filter = ({ filter, onChange }) => {
   // console.log('click');
   return (
-    <input
+    <input className="FormInput"
       type="text"
       name="filter"
       value={filter}
