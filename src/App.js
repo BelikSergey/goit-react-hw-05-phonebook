@@ -2,7 +2,7 @@ import { Component } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-// import { CSSTransition } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 import styles from './App.module.css';
 import ContactsList from "./components/ContactsList";
 import ContactForm from "./components/ContactForm";
@@ -98,10 +98,12 @@ class App extends Component {
           </Container>
           <Container>
         {contacts.length > 1 &&
-           <div className={styles.SearchForm}>
-           <p>Find contacts by name</p>
-           <Filter filter={filter} onChange={this.handleFilterSearch} />
-           </div>
+           <CSSTransition timeout={5000} classNames={styles}>
+             <div className={styles.SearchForm}>
+             <p>Find contacts by name</p>
+             <Filter filter={filter} onChange={this.handleFilterSearch} />
+             </div>
+           </CSSTransition>
          }
         <ContactsList
           contacts={filteredContacts}

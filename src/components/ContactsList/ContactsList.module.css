@@ -24,19 +24,19 @@
     margin: 15px 0 0 0;
     padding: 0;
 }
-.appear {
+.enter {
     /* opacity: 0; */
     transform: translateX(-100%);
 }
-.appearActive {
+.enterActive {
     /* opacity: 1; */
     transform: translateX(0);
-    transition: all 250ms;
+    transition: transform 250ms;
 }
-.appearExit {
+.exit {
     transform: translateX(0);
 }
-.appearExitActive {
+.exitActive {
     transform: translateX(-100%);
-    transition: all 250ms;
+    transition: transform 250ms;
 }

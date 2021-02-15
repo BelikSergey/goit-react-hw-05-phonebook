@@ -14,3 +14,21 @@
     border: 1px solid grey;
     margin-bottom: 5px;
 }
+.appear {
+    opacity: 0;
+    transform: scale(0.1);
+}
+.appearActive {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 5000ms linear;
+}
+.exit {
+    opacity: 1;
+    transform: scale(1);
+}
+.exitActive {
+    opacity: 0;
+    transform: scale(0.1);
+    transition: all 250ms linear;
+}

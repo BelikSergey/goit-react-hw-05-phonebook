@@ -1,17 +1,17 @@
 import PropTypes from "prop-types";
-import { CSSTransition } from 'react-transition-group';
+// import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { CgClose } from "react-icons/cg";
 import s from "./ContactsList.module.css";
 
 export default function ContactListItem({ id, name, number, onRemove }) {
     // console.log(name, number);
     return (
-      <CSSTransition
-      classNames={s}
-        in={true} 
-        appear={true}
-        timeout={2500}
-        unmountOnExit>
+      // <CSSTransition
+      // classNames={s}
+      //   in={true} 
+      //   appear={true}
+      //   timeout={250}
+      //   unmountOnExit>
           
         <li className={s.Item}>
         <span>{name}</span><span>{number}</span> 
@@ -19,7 +19,7 @@ export default function ContactListItem({ id, name, number, onRemove }) {
           <CgClose/>
         </button>
       </li>
-      </CSSTransition>
+      // </CSSTransition>
       
     );
   }
