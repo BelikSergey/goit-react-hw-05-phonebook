@@ -14,14 +14,14 @@
     border: 1px solid grey;
     margin-bottom: 5px;
 }
-.appear {
+.enter {
     opacity: 0;
     transform: scale(0.1);
 }
-.appearActive {
+.enterActive {
     opacity: 1;
     transform: scale(1);
-    transition: all 5000ms linear;
+    transition: all 250ms linear;
 }
 .exit {
     opacity: 1;

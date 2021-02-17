@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { nanoid } from "nanoid";
 import s from "./ContactForm.module.css";
 // import PropTypes from 'prop-types';
@@ -28,7 +30,13 @@ export default class ContactForm extends Component {
     const { name, number } = this.state;
     const { onChekunike } = this.props;
     if (!name || !number) {
-      alert("Empty fields!!! Please fill");
+      toast.warn('Empty fields!!! Please fill',{
+        autoClose:2000,
+        hideProgressBar: true,
+        pauseOnHover: false,
+        // draggable: false,
+        position: "top-center",
+      });
       return false;
     }
     return onChekunike(name);

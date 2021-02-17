@@ -50,7 +50,10 @@ class App extends Component {
     const isContactThere = contacts.find((contact) => contact.name === name);
     if (isContactThere) {
       toast.error('Contact is exist', {
-        autoClose: 2000,
+        autoClose: 2200,
+        hideProgressBar: true,
+        pauseOnHover: false,
+        // draggable: false,
         position: "top-right",
     })
       // alert("Contact is exist");
@@ -81,30 +84,22 @@ class App extends Component {
     return (
       <>
         <Container>
-          {/* <CSSTransition
-          appear
-          in={true}
-          className={styles}
-          timeout={500}
-
-          > */}
           <LogoPhoneBook/>
-          {/* </CSSTransition> */}
-        
         <ContactForm
           onSubmit={this.handleSubmitForm}
           onChekunike={this.handleUniceContact}
         />
           </Container>
           <Container>
-        {contacts.length > 1 &&
-           <CSSTransition timeout={5000} classNames={styles}>
+          <CSSTransition in={contacts.length > 1} 
+          timeout={250} 
+          classNames={styles}
+          unmountOnExit>
              <div className={styles.SearchForm}>
              <p>Find contacts by name</p>
              <Filter filter={filter} onChange={this.handleFilterSearch} />
              </div>
-           </CSSTransition>
-         }
+         </CSSTransition>
         <ContactsList
           contacts={filteredContacts}
           onRemove={this.handleRemoveContact}
